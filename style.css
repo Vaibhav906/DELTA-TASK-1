@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #6B2F7A;
+    font-family: 'Courier New', monospace;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111;
+    color: white;
+    padding: 0 20px;
+    height: 48px;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: #ddd;
+}
+
+.turn-info {
+    font-size: 15px;
+    font-weight: bold;
+    color: #4fc3f7;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.stats {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 13px;
+    color: #bbb;
+}
+
+.blue-text { color: #4fc3f7; font-weight: bold; }
+.red-text  { color: #ef5350; font-weight: bold; }
+
+.stats button {
+    background: #222;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.stats button:hover {
+    background: #444;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 48px);
+}
+
+
+#grid {
+    display: grid;
+    gap: 3px;
+    background-color: #1a524a;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid #2a2a2a;
+    
+}
+
+
+.cell {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    width: 50px;
+    height: 50px;
+    background-color: #1b1a52;
+    border: 1px solid #2a1040;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.15s, transform 0.1s;
+    position: relative;
+}
+
+.cell:hover {
+    background-color: #52246e;
+    transform: scale(1.04);
+}
+
+
+
+.cell.invalid {
+    animation: shake 0.3s ease;
+    background-color: #5a0000 !important;
+}
+
+.cell.exploding {
+    animation: pop 0.25s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%       { transform: translateX(-5px); }
+    75%       { transform: translateX(5px); }
+}
+
+@keyframes pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.25); background-color: #ff9800; }
+    100% { transform: scale(1); }
+}
+
+
+.orb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+
+.orb.blue {
+    background: blue;
+    
+}
+
+.orb.red {
+    background: red;
+    
+}
+
+
+#overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+#overlayText {
+    font-size: 52px;
+    font-weight: bold;
+    
+    letter-spacing: 6px;
+    font-family: 'Courier New', monospace;
+}
+
+.overlay-content button {
+    background: #222;
+    color: white;
+    border: 2px solid #555;
+    padding: 12px 36px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.overlay-content button:hover {
+    background: #444;
+    border-color: #888;
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 500px) {
+    .navbar {
+        padding: 0 10px;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 6px 10px;
+        gap: 4px;
+    }
+
+    .logo { font-size: 14px; }
+
+    .turn-info { font-size: 12px; }
+
+    .stats {
+        gap: 8px;
+        font-size: 11px;
+        flex-wrap: wrap;
+    }
+
+    .container {
+        height: calc(100vh - 80px);
+    }
+
+    .cell {
+        width: 40px;
+        height: 40px;
+    }
+
+    .orb {
+        width: 14px;
+        height: 14px;
+    }
+
+    #overlayText { font-size: 32px; }
+}
+
+@media (max-width: 360px) {
+    .cell {
+        width: 34px;
+        height: 34px;
+    }
+    .orb {
+        width: 12px;
+        height: 12px;
+    }
+}
