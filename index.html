@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain Reaction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <span class="logo">CHAIN RXN.</span>
+        <span class="turn-info" id="turnInfo">BLUE player starts</span>
+        <div class="stats">
+            <span>GAME <span id="gameTimer">3:00</span></span>
+            <span>TURN <span id="playerTimer">0:15</span></span>
+            <span class="blue-text">BLUE <span id="blueScore">0</span></span>
+            <span class="red-text">RED <span id="redScore">0</span></span>
+            <button id="pauseBtn">PAUSE</button>
+            <button id="restartBtn">RESTART</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="grid"></div>
+    </div>
+
+    <div id="overlay">
+        <div class="overlay-content">
+            <div id="overlayText">PAUSED</div>
+            <button id="overlayBtn">RESUME</button>
+        </div>
+    </div>
+
+    <script src="explosion.js"></script>
+    <script src="scoresnshiii.js"></script>
+    <script src="gridnorbs.js"></script>
+    <script src="event_handler.js"></script>
+</body>
+</html>
